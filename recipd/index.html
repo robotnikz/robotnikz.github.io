@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – Recipd</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    .back { font-size: 0.88rem; margin-bottom: 1.5rem; }
+    .back a { color: #0071e3; text-decoration: none; }
+    .back a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .subtitle { color: #6e6e73; font-size: 0.95rem; margin-bottom: 2.5rem; }
+    h2 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.5rem; color: #1d1d1f; }
+    p, li { font-size: 0.97rem; color: #3a3a3c; }
+    ul { padding-left: 1.4rem; margin-top: 0.4rem; }
+    li { margin-bottom: 0.3rem; }
+    a { color: #0071e3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin-top: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    #en { display: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="back"><a href="/">← Alle Apps</a></div>
+
+  <div class="lang-switch">
+    <a href="#" onclick="showLang('de'); return false;">Deutsch</a> &nbsp;|&nbsp;
+    <a href="#" onclick="showLang('en'); return false;">English</a>
+  </div>
+
+  <!-- ===================== DEUTSCH ===================== -->
+  <div id="de">
+    <h1>Datenschutzerklärung</h1>
+    <p class="subtitle">Recipd &nbsp;·&nbsp; Zuletzt aktualisiert: Mai 2026</p>
+
+    <div class="card">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Tobias Halbei<br />
+        E-Mail: <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>2. Grundsatz: Keine Datenerhebung durch den Entwickler</h2>
+      <p>
+        Recipd erhebt, speichert oder überträgt selbst keine personenbezogenen Daten.
+        Es gibt kein Nutzerkonto, keinen eigenen Server und keine Analyse durch den Entwickler.
+        Alle Rezepte, Zutaten, Meal-Plan-Einträge und Einkaufslisten werden
+        ausschließlich lokal auf deinem Gerät gespeichert.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>3. Rezept-Import (Share-Extension)</h2>
+      <p>
+        Wenn du ein Rezept über den Safari-Teilen-Button importierst, ruft die App
+        die URL der Webseite ab, um Zutaten und Kochschritte zu extrahieren.
+        Diese Anfrage geht direkt von deinem Gerät an die jeweilige Webseite —
+        der Entwickler sieht dabei nichts und speichert keine URLs.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>4. Mikrofon &amp; Spracherkennung</h2>
+      <p>
+        Im Kochmodus kannst du optional Sprachbefehle verwenden (z. B. „weiter"),
+        um freihändig durch die Kochschritte zu navigieren. Dafür benötigt die App
+        Zugriff auf Mikrofon und Spracherkennung.
+      </p>
+      <ul>
+        <li>Die Sprachverarbeitung erfolgt ausschließlich auf deinem Gerät (on-device).</li>
+        <li>Es werden keine Tonaufnahmen gespeichert oder übertragen.</li>
+        <li>Du kannst den Zugriff jederzeit in den iPhone-Einstellungen widerrufen.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>5. Benachrichtigungen</h2>
+      <p>
+        Recipd kann optionale lokale Push-Benachrichtigungen senden,
+        wenn ein Koch-Timer abläuft. Diese werden ausschließlich lokal auf
+        deinem Gerät verarbeitet und nicht an Server übertragen.
+        Du kannst Benachrichtigungen jederzeit in den iPhone-Einstellungen deaktivieren.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>6. Home-Screen-Widget</h2>
+      <p>
+        Das optionale Widget zeigt deinen geplanten Tagesplan auf dem Home-Screen.
+        Dafür werden ausgewählte Rezeptdaten in einem lokalen App-Group-Speicher
+        (<code>UserDefaults</code>) auf deinem Gerät abgelegt — ausschließlich lokal,
+        keine Übertragung an Server.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>7. In-App-Kauf – Recipd Pro</h2>
+      <p>
+        Der optionale einmalige Pro-Kauf wird vollständig über
+        <strong>Apple StoreKit</strong> abgewickelt.
+        Der Entwickler erhält dabei keine Zahlungsdaten.
+        Es gelten die
+        <a href="https://www.apple.com/legal/privacy/de-ww/" target="_blank">Datenschutzrichtlinien von Apple</a>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>8. Werbung &amp; Tracking</h2>
+      <p>
+        Recipd enthält keinerlei Werbung, verwendet keine Werbe-SDKs und verfolgt
+        keine Nutzeraktivitäten.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>9. Deine Rechte (DSGVO)</h2>
+      <p>
+        Da wir selbst keine personenbezogenen Daten verarbeiten, entfallen Auskunfts-,
+        Berichtigungs- und Löschansprüche gegenüber dem Entwickler.
+        Alle App-Daten kannst du jederzeit durch Deinstallation der App vollständig löschen.
+        Für Daten, die Apple verarbeitet, wende dich bitte direkt an Apple.
+      </p>
+      <p style="margin-top:0.6rem;">
+        Bei Fragen: <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>10. Änderungen</h2>
+      <p>
+        Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu aktualisieren.
+        Die aktuelle Version ist stets auf dieser Seite abrufbar.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <div id="en">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Recipd &nbsp;·&nbsp; Last updated: May 2026</p>
+
+    <div class="card">
+      <h2>1. Controller</h2>
+      <p>
+        Tobias Halbei<br />
+        Email: <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>2. No personal data collected</h2>
+      <p>
+        Recipd does not collect, store, or transmit any personal data on its own.
+        There is no user account, no server, and no analytics by the developer.
+        All recipes, ingredients, meal plan entries, and shopping lists are stored
+        exclusively on your device.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>3. Recipe import (Share Extension)</h2>
+      <p>
+        When you import a recipe via the Safari share button, the app fetches the
+        webpage URL to extract ingredients and cooking steps.
+        This request goes directly from your device to the respective website —
+        the developer sees nothing and stores no URLs.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>4. Microphone &amp; Speech Recognition</h2>
+      <p>
+        In cooking mode, you can optionally use voice commands (e.g. "next step")
+        to navigate hands-free. For this, the app requires microphone and speech
+        recognition access.
+      </p>
+      <ul>
+        <li>Speech processing happens exclusively on your device (on-device).</li>
+        <li>No audio recordings are stored or transmitted.</li>
+        <li>You can revoke access at any time in iPhone Settings.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>5. Notifications</h2>
+      <p>
+        Recipd may send optional local push notifications when a cooking timer ends.
+        These are processed exclusively on your device and never transmitted to any server.
+        You can disable notifications at any time in iPhone Settings.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>6. Home Screen Widget</h2>
+      <p>
+        The optional widget displays your planned meals on the home screen.
+        Selected recipe data is stored in a local App Group store
+        (<code>UserDefaults</code>) on your device — locally only,
+        no server transmission.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>7. In-App Purchase – Recipd Pro</h2>
+      <p>
+        The optional one-time Pro purchase is handled entirely through
+        <strong>Apple StoreKit</strong>.
+        The developer does not receive any payment information.
+        Apple's <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank">Privacy Policy</a> applies.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>8. Advertising &amp; Tracking</h2>
+      <p>
+        Recipd contains no advertising, uses no ad SDKs, and does not track
+        user activity in any way.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>9. Your rights (GDPR)</h2>
+      <p>
+        Since we do not process personal data ourselves, rights of access, rectification,
+        and erasure do not apply to the developer.
+        You can delete all app data at any time by uninstalling the app.
+        For data processed by Apple, please contact Apple directly.
+      </p>
+      <p style="margin-top:0.6rem;">
+        Contact: <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>10. Changes</h2>
+      <p>
+        We reserve the right to update this privacy policy as needed.
+        The current version is always available on this page.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showLang(lang) {
+    document.getElementById('de').style.display = lang === 'de' ? 'block' : 'none';
+    document.getElementById('en').style.display = lang === 'en' ? 'block' : 'none';
+  }
+</script>
+</body>
+</html>
