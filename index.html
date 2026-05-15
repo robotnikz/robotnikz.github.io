@@ -41,19 +41,40 @@
     }
     .card h2 { font-size: 1.1rem; font-weight: 600; }
     .card p { font-size: 0.88rem; color: #6e6e73; flex: 1; }
-    .card a {
-      margin-top: 0.8rem;
-      display: inline-block;
-      font-size: 0.85rem;
-      color: #0071e3;
-      text-decoration: none;
+    .card-actions {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
-    .card a:hover { text-decoration: underline; }
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: #1d1d1f;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.55rem 0.9rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-appstore:hover { background: #2c2c2e; }
+    .privacy-link {
+      font-size: 0.78rem;
+      color: #6e6e73;
+      text-decoration: none;
+      text-align: center;
+    }
+    .privacy-link:hover { color: #0071e3; text-decoration: underline; }
     footer {
       margin-top: 4rem;
       font-size: 0.82rem;
       color: #aeaeb2;
     }
+    footer a { color: #aeaeb2; }
   </style>
 </head>
 <body>
@@ -69,26 +90,41 @@
       <div class="card-icon">🧑‍💼</div>
       <h2>Grownup</h2>
       <p>Schritt-für-Schritt-Guides für das echte Leben: Steuern, Wohnen, Versicherungen und mehr.</p>
-      <a href="/adultingos">Datenschutzerklärung →</a>
+      <div class="card-actions">
+        <a class="btn-appstore" href="https://apps.apple.com/de/app/grownup/id6768424573" target="_blank">
+           Im App Store laden
+        </a>
+        <a class="privacy-link" href="/adultingos">Datenschutzerklärung</a>
+      </div>
     </div>
 
     <div class="card">
       <div class="card-icon">🥗</div>
       <h2>MealStreak</h2>
       <p>Minimalistischer Ernährungs-Tracker mit GitHub-Style Streak-Grids. Keine Kalorien, kein Stress.</p>
-      <a href="/mealstreak">Datenschutzerklärung →</a>
+      <div class="card-actions">
+        <a class="btn-appstore" href="https://apps.apple.com/de/app/mealstreak/id6768700380" target="_blank">
+           Im App Store laden
+        </a>
+        <a class="privacy-link" href="/mealstreak">Datenschutzerklärung</a>
+      </div>
     </div>
 
     <div class="card">
       <div class="card-icon">🍴</div>
       <h2>Recipd</h2>
       <p>Rezepte aus dem Web speichern, kochen und die Woche planen – alles auf deinem Gerät, kein Account nötig.</p>
-      <a href="/recipd">Datenschutzerklärung →</a>
+      <div class="card-actions">
+        <a class="btn-appstore" href="https://apps.apple.com/de/app/recipd/id6769465137" target="_blank">
+           Im App Store laden
+        </a>
+        <a class="privacy-link" href="/recipd">Datenschutzerklärung</a>
+      </div>
     </div>
 
   </div>
 
-  <footer>© 2026 Tobias Halbei &nbsp;·&nbsp; <a href="mailto:tobiashalbei@mailbox.org" style="color:#aeaeb2">tobiashalbei@mailbox.org</a></footer>
+  <footer>© 2026 Tobias Halbei &nbsp;·&nbsp; <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a></footer>
 
 </body>
 </html>
