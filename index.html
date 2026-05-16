@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,10 +16,44 @@
       line-height: 1.5;
     }
 
-    /* Hero — MidLife featured */
+    /* Language switcher */
+    .lang-switch {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      display: flex;
+      gap: 0.15rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.2rem;
+      border-radius: 999px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #6e6e73;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-switch button.active {
+      background: #1d1d1f;
+      color: #fff;
+    }
+    .lang-switch button:not(.active):hover { color: #1d1d1f; }
+
+    /* Hero */
     .hero {
       background: linear-gradient(180deg, #faf9f7 0%, #f5f5f7 100%);
-      padding: 3.5rem 1.25rem 3rem;
+      padding: 4rem 1.25rem 3rem;
+      position: relative;
     }
     .hero-inner {
       max-width: 640px;
@@ -167,15 +201,10 @@
     }
     footer a { color: #aeaeb2; text-decoration: none; }
     footer a:hover { color: #1d1d1f; }
-    .github-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
+    .github-link { display: inline-flex; align-items: center; gap: 0.3rem; }
 
-    /* Mobile */
     @media (max-width: 480px) {
-      .hero { padding: 2.5rem 1rem 2.5rem; }
+      .hero { padding: 3.5rem 1rem 2.5rem; }
       .hero h1 { font-size: 1.9rem; }
       .hero-tagline { font-size: 0.97rem; }
       .hero-description { font-size: 0.92rem; }
@@ -184,40 +213,42 @@
       .app-row h3 { font-size: 0.95rem; }
       .app-row p { font-size: 0.78rem; }
       .btn-mini { font-size: 0.74rem; padding: 0.4rem 0.7rem; }
+      .lang-switch { top: 0.9rem; right: 0.9rem; }
+      .lang-switch button { font-size: 0.74rem; padding: 0.3rem 0.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO: MidLife featured -->
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+
   <section class="hero" id="midlife">
     <div class="hero-inner">
-      <div class="featured-badge">Neu &middot; New</div>
+      <div class="featured-badge" data-i18n="badge">New</div>
       <h1>MidLife</h1>
-      <p class="hero-tagline">Wechseljahre verstehen. Privat. Lokal.<br/>Menopause tracker for iOS.</p>
-      <p class="hero-description">
-        Symptome, Zyklus und HRT diskret tracken, Muster erkennen,
-        Arztberichte als PDF erstellen — komplett auf deinem iPhone.
-      </p>
+      <p class="hero-tagline" data-i18n="hero.tagline">Understand menopause. Private. Local.</p>
+      <p class="hero-description" data-i18n="hero.description">Track symptoms, cycles, and HRT discreetly. Spot patterns. Generate doctor-ready PDF reports — all on your iPhone.</p>
       <div class="hero-features">
-        <span>Kein Konto</span>
-        <span>Keine Cloud</span>
-        <span>Einmaliger Kauf</span>
-        <span>DE &amp; EN</span>
+        <span data-i18n="feature.account">No account</span>
+        <span data-i18n="feature.cloud">No cloud</span>
+        <span data-i18n="feature.purchase">One-time purchase</span>
+        <span data-i18n="feature.locale">German &amp; English</span>
       </div>
       <a class="hero-cta" href="https://apps.apple.com/app/midlife/id6769793211" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
         </svg>
-        Im App Store laden
+        <span data-i18n="cta.download">Download on the App Store</span>
       </a>
-      <a class="hero-privacy" href="/midlife">Datenschutzerklärung &middot; Privacy Policy</a>
+      <a class="hero-privacy" href="/midlife" data-i18n="cta.privacy">Privacy Policy</a>
     </div>
   </section>
 
-  <!-- OTHER APPS -->
   <section class="other-apps">
-    <p class="other-apps-title">Weitere Apps</p>
+    <p class="other-apps-title" data-i18n="more.title">More apps</p>
 
     <div class="apps-list">
 
@@ -225,11 +256,11 @@
         <div class="app-row-icon">🥗</div>
         <div class="app-row-content">
           <h3>MealStreak</h3>
-          <p>Minimalistischer Ernährungs-Tracker mit GitHub-Style Streak-Grids. Keine Kalorien, kein Stress.</p>
+          <p data-i18n="mealstreak.desc">Minimalist meal tracker with GitHub-style streak grids. No calories, no stress.</p>
         </div>
         <div class="app-row-actions">
           <a class="btn-mini" href="https://apps.apple.com/app/mealstreak/id6768700380" target="_blank" rel="noopener">App Store</a>
-          <a class="privacy-mini" href="/mealstreak">Datenschutz</a>
+          <a class="privacy-mini" href="/mealstreak" data-i18n="privacy.mini">Privacy</a>
         </div>
       </div>
 
@@ -237,11 +268,11 @@
         <div class="app-row-icon">🍴</div>
         <div class="app-row-content">
           <h3>Recipd</h3>
-          <p>Rezepte aus dem Web speichern, kochen und die Woche planen — alles auf deinem Gerät, kein Account nötig.</p>
+          <p data-i18n="recipd.desc">Save recipes from the web, cook them, plan your week — all on your device, no account needed.</p>
         </div>
         <div class="app-row-actions">
           <a class="btn-mini" href="https://apps.apple.com/app/recipd/id6769465137" target="_blank" rel="noopener">App Store</a>
-          <a class="privacy-mini" href="/recipd">Datenschutz</a>
+          <a class="privacy-mini" href="/recipd" data-i18n="privacy.mini">Privacy</a>
         </div>
       </div>
 
@@ -249,11 +280,11 @@
         <div class="app-row-icon">🧑‍💼</div>
         <div class="app-row-content">
           <h3>Grownup</h3>
-          <p>Schritt-für-Schritt-Guides für das echte Leben: Steuern, Wohnen, Versicherungen und mehr.</p>
+          <p data-i18n="grownup.desc">Step-by-step guides for adult life: taxes, housing, insurance, and more.</p>
         </div>
         <div class="app-row-actions">
           <a class="btn-mini" href="https://apps.apple.com/app/grownup/id6768424573" target="_blank" rel="noopener">App Store</a>
-          <a class="privacy-mini" href="/adultingos">Datenschutz</a>
+          <a class="privacy-mini" href="/adultingos" data-i18n="privacy.mini">Privacy</a>
         </div>
       </div>
 
@@ -269,6 +300,73 @@
       robotnikz
     </a>
   </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "badge": "New",
+        "hero.tagline": "Understand menopause. Private. Local.",
+        "hero.description": "Track symptoms, cycles, and HRT discreetly. Spot patterns. Generate doctor-ready PDF reports — all on your iPhone.",
+        "feature.account": "No account",
+        "feature.cloud": "No cloud",
+        "feature.purchase": "One-time purchase",
+        "feature.locale": "German & English",
+        "cta.download": "Download on the App Store",
+        "cta.privacy": "Privacy Policy",
+        "more.title": "More apps",
+        "mealstreak.desc": "Minimalist meal tracker with GitHub-style streak grids. No calories, no stress.",
+        "recipd.desc": "Save recipes from the web, cook them, plan your week — all on your device, no account needed.",
+        "grownup.desc": "Step-by-step guides for adult life: taxes, housing, insurance, and more.",
+        "privacy.mini": "Privacy"
+      },
+      de: {
+        "badge": "Neu",
+        "hero.tagline": "Wechseljahre verstehen. Privat. Lokal.",
+        "hero.description": "Symptome, Zyklus und HRT diskret tracken. Muster erkennen. Arztberichte als PDF erstellen — komplett auf deinem iPhone.",
+        "feature.account": "Kein Konto",
+        "feature.cloud": "Keine Cloud",
+        "feature.purchase": "Einmalkauf",
+        "feature.locale": "Deutsch & Englisch",
+        "cta.download": "Im App Store laden",
+        "cta.privacy": "Datenschutzerklärung",
+        "more.title": "Weitere Apps",
+        "mealstreak.desc": "Minimalistischer Ernährungs-Tracker mit GitHub-Style Streak-Grids. Keine Kalorien, kein Stress.",
+        "recipd.desc": "Rezepte aus dem Web speichern, kochen und die Woche planen — alles auf deinem Gerät, kein Account nötig.",
+        "grownup.desc": "Schritt-für-Schritt-Guides für das echte Leben: Steuern, Wohnen, Versicherungen und mehr.",
+        "privacy.mini": "Datenschutz"
+      }
+    };
+
+    function setLang(lang) {
+      if (!translations[lang]) lang = "en";
+      document.documentElement.lang = lang;
+      const t = translations[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (t[key]) el.textContent = t[key];
+      });
+      document.querySelectorAll(".lang-switch button").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+      try { localStorage.setItem("robotnikz.lang", lang); } catch (e) {}
+    }
+
+    function initLang() {
+      let lang = null;
+      try { lang = localStorage.getItem("robotnikz.lang"); } catch (e) {}
+      if (!lang) {
+        const browser = (navigator.language || "en").toLowerCase();
+        lang = browser.startsWith("de") ? "de" : "en";
+      }
+      setLang(lang);
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang")));
+    });
+
+    initLang();
+  </script>
 
 </body>
 </html>
