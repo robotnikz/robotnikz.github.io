@@ -3,154 +3,269 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>robotnikz – Apps</title>
+  <title>robotnikz – Privacy-First iOS Apps</title>
+  <meta name="description" content="Indie iOS apps for health and mindfulness. Privacy-first, no account, no cloud, one-time purchase." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #f5f5f7;
       color: #1d1d1f;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 4rem 1rem;
+      line-height: 1.5;
     }
-    header { text-align: center; margin-bottom: 3rem; }
-    header h1 { font-size: 2rem; font-weight: 700; }
-    header p { color: #6e6e73; margin-top: 0.4rem; font-size: 0.97rem; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.2rem;
-      width: 100%;
-      max-width: 860px;
+
+    /* Hero — MidLife featured */
+    .hero {
+      background: linear-gradient(180deg, #faf9f7 0%, #f5f5f7 100%);
+      padding: 3.5rem 1.25rem 3rem;
     }
-    .card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 1.6rem;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
     }
-    .card-icon {
+    .featured-badge {
+      display: inline-block;
+      background: #C97B5C;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
       font-size: 2.4rem;
-      margin-bottom: 0.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #3C4858;
+      margin-bottom: 0.5rem;
     }
-    .card h2 { font-size: 1.1rem; font-weight: 600; }
-    .card p { font-size: 0.88rem; color: #6e6e73; flex: 1; }
-    .card-actions {
-      margin-top: 1rem;
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: #6e6e73;
+      margin-bottom: 1.6rem;
+    }
+    .hero-description {
+      font-size: 0.97rem;
+      color: #3a3a3c;
+      max-width: 520px;
+      margin: 0 auto 1.8rem;
+    }
+    .hero-features {
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      justify-content: center;
+      gap: 0.5rem 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      color: #6e6e73;
     }
-    .btn-appstore {
+    .hero-features span { white-space: nowrap; }
+    .hero-features span::before { content: "✓ "; color: #C97B5C; font-weight: 700; }
+    .hero-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       background: #1d1d1f;
       color: #fff;
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 0.55rem 0.9rem;
-      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.9rem 1.6rem;
+      border-radius: 12px;
       text-decoration: none;
-      transition: background 0.15s;
+      transition: transform 0.15s, background 0.15s;
     }
-    .btn-appstore:hover { background: #2c2c2e; }
-    .privacy-link {
-      font-size: 0.78rem;
+    .hero-cta:hover { background: #2c2c2e; transform: translateY(-1px); }
+    .hero-cta svg { width: 22px; height: 22px; }
+    .hero-privacy {
+      display: block;
+      margin-top: 0.9rem;
+      font-size: 0.82rem;
       color: #6e6e73;
       text-decoration: none;
+    }
+    .hero-privacy:hover { color: #0071e3; text-decoration: underline; }
+
+    /* Other apps */
+    .other-apps {
+      padding: 3rem 1.25rem 4rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .other-apps-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aeaeb2;
+      text-align: center;
+      margin-bottom: 1.6rem;
+    }
+    .apps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .app-row {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      scroll-margin-top: 1rem;
+    }
+    .app-row-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 48px;
       text-align: center;
     }
-    .privacy-link:hover { color: #0071e3; text-decoration: underline; }
+    .app-row-content { flex: 1; min-width: 0; }
+    .app-row h3 { font-size: 1.02rem; font-weight: 600; color: #1d1d1f; margin-bottom: 0.15rem; }
+    .app-row p { font-size: 0.83rem; color: #6e6e73; line-height: 1.4; }
+    .app-row-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+    .btn-mini {
+      background: #1d1d1f;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-mini:hover { background: #2c2c2e; }
+    .privacy-mini {
+      font-size: 0.7rem;
+      color: #aeaeb2;
+      text-decoration: none;
+    }
+    .privacy-mini:hover { color: #0071e3; text-decoration: underline; }
+
+    /* Footer */
     footer {
-      margin-top: 4rem;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+      text-align: center;
       font-size: 0.82rem;
       color: #aeaeb2;
     }
-    footer a { color: #aeaeb2; }
+    footer a { color: #aeaeb2; text-decoration: none; }
+    footer a:hover { color: #1d1d1f; }
     .github-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      color: #aeaeb2;
-      text-decoration: none;
-      transition: color 0.15s;
+      gap: 0.3rem;
     }
-    .github-link:hover { color: #1d1d1f; }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .hero { padding: 2.5rem 1rem 2.5rem; }
+      .hero h1 { font-size: 1.9rem; }
+      .hero-tagline { font-size: 0.97rem; }
+      .hero-description { font-size: 0.92rem; }
+      .app-row { padding: 0.95rem 1rem; gap: 0.7rem; }
+      .app-row-icon { font-size: 1.7rem; width: 38px; }
+      .app-row h3 { font-size: 0.95rem; }
+      .app-row p { font-size: 0.78rem; }
+      .btn-mini { font-size: 0.74rem; padding: 0.4rem 0.7rem; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>robotnikz</h1>
-    <p>Indie-Apps für iOS – entwickelt mit ❤️ in Deutschland</p>
-  </header>
-
-  <div class="grid" id="app-grid">
-
-    <div class="card">
-      <div class="card-icon">🧑‍💼</div>
-      <h2>Grownup</h2>
-      <p>Schritt-für-Schritt-Guides für das echte Leben: Steuern, Wohnen, Versicherungen und mehr.</p>
-      <div class="card-actions">
-        <a class="btn-appstore" href="https://apps.apple.com/de/app/grownup/id6768424573" target="_blank">
-           Im App Store laden
-        </a>
-        <a class="privacy-link" href="/adultingos">Datenschutzerklärung</a>
+  <!-- HERO: MidLife featured -->
+  <section class="hero" id="midlife">
+    <div class="hero-inner">
+      <div class="featured-badge">Neu &middot; New</div>
+      <h1>MidLife</h1>
+      <p class="hero-tagline">Wechseljahre verstehen. Privat. Lokal.<br/>Menopause tracker for iOS.</p>
+      <p class="hero-description">
+        Symptome, Zyklus und HRT diskret tracken, Muster erkennen,
+        Arztberichte als PDF erstellen — komplett auf deinem iPhone.
+      </p>
+      <div class="hero-features">
+        <span>Kein Konto</span>
+        <span>Keine Cloud</span>
+        <span>Einmaliger Kauf</span>
+        <span>DE &amp; EN</span>
       </div>
+      <a class="hero-cta" href="https://apps.apple.com/app/midlife/id6769793211" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+        </svg>
+        Im App Store laden
+      </a>
+      <a class="hero-privacy" href="/midlife">Datenschutzerklärung &middot; Privacy Policy</a>
     </div>
+  </section>
 
-    <div class="card">
-      <div class="card-icon">🥗</div>
-      <h2>MealStreak</h2>
-      <p>Minimalistischer Ernährungs-Tracker mit GitHub-Style Streak-Grids. Keine Kalorien, kein Stress.</p>
-      <div class="card-actions">
-        <a class="btn-appstore" href="https://apps.apple.com/de/app/mealstreak/id6768700380" target="_blank">
-           Im App Store laden
-        </a>
-        <a class="privacy-link" href="/mealstreak">Datenschutzerklärung</a>
+  <!-- OTHER APPS -->
+  <section class="other-apps">
+    <p class="other-apps-title">Weitere Apps</p>
+
+    <div class="apps-list">
+
+      <div class="app-row" id="mealstreak">
+        <div class="app-row-icon">🥗</div>
+        <div class="app-row-content">
+          <h3>MealStreak</h3>
+          <p>Minimalistischer Ernährungs-Tracker mit GitHub-Style Streak-Grids. Keine Kalorien, kein Stress.</p>
+        </div>
+        <div class="app-row-actions">
+          <a class="btn-mini" href="https://apps.apple.com/app/mealstreak/id6768700380" target="_blank" rel="noopener">App Store</a>
+          <a class="privacy-mini" href="/mealstreak">Datenschutz</a>
+        </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-icon">🍴</div>
-      <h2>Recipd</h2>
-      <p>Rezepte aus dem Web speichern, kochen und die Woche planen – alles auf deinem Gerät, kein Account nötig.</p>
-      <div class="card-actions">
-        <a class="btn-appstore" href="https://apps.apple.com/de/app/recipd/id6769465137" target="_blank">
-           Im App Store laden
-        </a>
-        <a class="privacy-link" href="/recipd">Datenschutzerklärung</a>
+      <div class="app-row" id="recipd">
+        <div class="app-row-icon">🍴</div>
+        <div class="app-row-content">
+          <h3>Recipd</h3>
+          <p>Rezepte aus dem Web speichern, kochen und die Woche planen — alles auf deinem Gerät, kein Account nötig.</p>
+        </div>
+        <div class="app-row-actions">
+          <a class="btn-mini" href="https://apps.apple.com/app/recipd/id6769465137" target="_blank" rel="noopener">App Store</a>
+          <a class="privacy-mini" href="/recipd">Datenschutz</a>
+        </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-icon">🌺</div>
-      <h2>MidLife</h2>
-      <p>Wechseljahre verstehen: Symptome, Zyklus und HRT diskret tracken, Muster erkennen und einen Arztbericht erstellen – komplett auf deinem Gerät.</p>
-      <div class="card-actions">
-        <a class="btn-appstore" href="https://apps.apple.com/us/app/midlife/id6769793211" target="_blank">
-           Im App Store laden
-        </a>
-        <a class="privacy-link" href="/midlife">Datenschutzerklärung</a>
+      <div class="app-row" id="grownup">
+        <div class="app-row-icon">🧑‍💼</div>
+        <div class="app-row-content">
+          <h3>Grownup</h3>
+          <p>Schritt-für-Schritt-Guides für das echte Leben: Steuern, Wohnen, Versicherungen und mehr.</p>
+        </div>
+        <div class="app-row-actions">
+          <a class="btn-mini" href="https://apps.apple.com/app/grownup/id6768424573" target="_blank" rel="noopener">App Store</a>
+          <a class="privacy-mini" href="/adultingos">Datenschutz</a>
+        </div>
       </div>
-    </div>
 
-  </div>
+    </div>
+  </section>
 
   <footer>
-    © 2026 Tobias Halbei &nbsp;·&nbsp;
+    © 2026 Tobias Halbei &nbsp;&middot;&nbsp;
     <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a>
-    &nbsp;·&nbsp;
-    <a class="github-link" href="https://github.com/robotnikz" target="_blank">
-      <svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    &nbsp;&middot;&nbsp;
+    <a class="github-link" href="https://github.com/robotnikz" target="_blank" rel="noopener">
+      <svg height="13" width="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
       robotnikz
     </a>
   </footer>
