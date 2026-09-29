@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MidLife – Wechseljahre-Tagebuch fürs iPhone</title>
+  <meta name="description" content="Symptome, Zyklus und Medikamente festhalten, Muster erkennen und einen Arztbericht als PDF erstellen. Alles bleibt auf dem iPhone: kein Konto, keine Cloud, kein Abo.">
+  <meta property="og:title" content="MidLife – Wechseljahre verstehen. Ganz privat.">
+  <meta property="og:description" content="Wechseljahre-Tagebuch fürs iPhone – ohne Konto, Cloud oder Abo.">
+  <meta property="og:image" content="https://robotnikz.github.io/midlife/app/img/og.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f9f6f2">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <style>
+    @font-face { font-family: F; src: url("fonts/fraunces-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+    @font-face { font-family: I; src: url("fonts/inter-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: I; src: url("fonts/inter-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+    @font-face { font-family: I; src: url("fonts/inter-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+    :root {
+      --schiefer: #2f3a47; --text: #3b4757; --leise: #6b6660; --terra: #c87a5c; --terra-dunkel: #a95f43;
+      --grund: #f9f6f2; --karte: #ffffff; --linie: #ecdcd0; --zart: #f3e8df;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: I, -apple-system, BlinkMacSystemFont, sans-serif; background: var(--grund); color: var(--text); line-height: 1.6; font-size: 17px; }
+    a { color: var(--terra-dunkel); }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+    h1, h2 { font-family: F, Georgia, serif; font-weight: 600; color: var(--schiefer); letter-spacing: -.015em; line-height: 1.1; }
+    h1 em, h2 em { font-style: normal; color: var(--terra); }
+
+    /* Kopf */
+    .marke { display: flex; align-items: center; gap: 12px; padding: 22px 0; font-weight: 700; font-size: 20px; color: var(--schiefer); }
+    .marke img { width: 44px; height: 44px; border-radius: 22%; box-shadow: 0 4px 12px rgba(200,122,92,.25); }
+
+    /* Hero */
+    .hero { background: linear-gradient(160deg, #fbf8f4 0%, #f4ebe2 100%); padding-bottom: 56px; }
+    .hero-raster { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding-top: 24px; }
+    .hero h1 { font-size: clamp(40px, 6vw, 64px); margin-bottom: 20px; }
+    .hero p.lead { font-size: 20px; max-width: 30em; margin-bottom: 30px; }
+    .knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--schiefer); color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 18px; padding: 17px 30px; border-radius: 14px; min-height: 56px; transition: background .15s; }
+    .knopf:hover { background: #1f2833; color: #fff; }
+    .knopf svg { flex: none; }
+    .klein { font-size: 15px; color: var(--leise); margin-top: 14px; }
+    .telefon { justify-self: center; width: min(320px, 78vw); border: 10px solid #1d1d1f; border-radius: 46px; overflow: hidden; background: #1d1d1f;
+      box-shadow: 0 40px 70px rgba(59,71,87,.25), 0 10px 26px rgba(59,71,87,.15); }
+    .telefon img { display: block; width: 100%; height: auto; border-radius: 36px; }
+
+    /* Abschnitte */
+    section.block { padding: 64px 0; }
+    section.block h2 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 14px; }
+    .einleitung { max-width: 38em; margin-bottom: 34px; font-size: 18px; }
+    .karten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .karte { background: var(--karte); border: 1px solid var(--linie); border-radius: 18px; padding: 22px 22px 20px; }
+    .karte h3 { font-size: 18px; color: var(--schiefer); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .karte p { font-size: 16px; }
+    .pro { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--terra-dunkel); background: var(--zart); border-radius: 999px; padding: 2px 9px; }
+    .screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 8px; }
+    .screens figure { text-align: center; }
+    .screens .telefon { width: 100%; max-width: 250px; border-width: 8px; border-radius: 38px; box-shadow: 0 24px 44px rgba(59,71,87,.18); }
+    .screens .telefon img { border-radius: 30px; }
+    .screens figcaption { font-size: 15px; color: var(--leise); margin-top: 14px; }
+
+    .privat { background: var(--schiefer); color: #e9edf2; border-radius: 26px; padding: 44px 40px; }
+    .privat h2 { color: #fff; }
+    .privat ul { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 30px; margin-top: 22px; }
+    .privat li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; }
+    .privat li svg { flex: none; margin-top: 4px; }
+
+    .preis { text-align: center; }
+    .preis .einleitung { margin: 0 auto 28px; }
+    .hinweis { font-size: 15px; color: var(--leise); max-width: 42em; margin: 26px auto 0; }
+
+    footer { border-top: 1px solid var(--linie); padding: 40px 0 60px; font-size: 14px; color: var(--leise); }
+    footer h4 { font-size: 15px; color: var(--schiefer); margin: 18px 0 6px; }
+    footer p { margin-bottom: 8px; max-width: 60em; }
+
+    @media (max-width: 820px) {
+      body { font-size: 16px; }
+      .hero-raster { grid-template-columns: 1fr; gap: 34px; text-align: left; }
+      .hero p.lead { font-size: 18px; }
+      .knopf { width: 100%; }
+      .karten { grid-template-columns: 1fr; }
+      /* Galerie am Handy als Wischleiste statt drei Telefone untereinander */
+      .screens { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px;
+        margin: 0 -22px; padding: 4px 22px 18px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .screens::-webkit-scrollbar { display: none; }
+      .screens figure { flex: 0 0 64%; scroll-snap-align: center; }
+      .screens .telefon { max-width: none; box-shadow: 0 14px 28px rgba(59,71,87,.16); }
+      .privat { padding: 32px 22px; border-radius: 20px; }
+      .privat ul { grid-template-columns: 1fr; }
+      section.block { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="marke"><img src="img/icon.webp" alt="" width="44" height="44">MidLife</div>
+      <div class="hero-raster">
+        <div>
+          <h1>Wechseljahre verstehen.<br><em>Ganz privat.</em></h1>
+          <p class="lead">Hitzewallungen, Schlaf, Stimmung und Zyklus mit einem Tipp festhalten, Muster über die Wochen erkennen – und zum Arzttermin einen übersichtlichen Bericht mitbringen.</p>
+          <a class="knopf" href="https://apps.apple.com/de/app/midlife/id6769793211">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Gratis im App Store laden
+          </a>
+          <p class="klein">Für iPhone ab iOS 17 · Deutsch &amp; Englisch · ohne Konto, Cloud oder Abo</p>
+        </div>
+        <div class="telefon"><img src="img/heute.webp" alt="MidLife-Bildschirm „Heute“ mit Schnellerfassung von Symptomen" width="640" height="1390"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="block">
+      <div class="wrap">
+        <h2>Was MidLife kann</h2>
+        <p class="einleitung">Ein Tagebuch für die Wechseljahre – gebaut für unregelmäßige Zyklen und für alle, die ihre Daten lieber bei sich behalten.</p>
+        <div class="karten">
+          <div class="karte"><h3>Mit einem Tipp erfassen</h3><p>32 Symptome in sechs Bereichen, von Hitzewallung bis Gehirnnebel – mit Stärke, Auslöser und Notiz.</p></div>
+          <div class="karte"><h3>Unregelmäßige Zyklen</h3><p>Für die Perimenopause gemacht: Zyklen von 21 bis 60 Tagen statt 28-Tage-Lehrbuchwerten.</p></div>
+          <div class="karte"><h3>Muster erkennen <span class="pro">PRO</span></h3><p>Häufigkeit, Tageszeiten und mögliche Auslöser im Überblick, dazu eine kurze Zusammenfassung – berechnet auf dem iPhone.</p></div>
+          <div class="karte"><h3>Arztbericht als PDF <span class="pro">PRO</span></h3><p>Einen Zeitraum wählen, Bericht erzeugen, beim Termin zeigen oder weitergeben – Sie entscheiden, an wen.</p></div>
+          <div class="karte"><h3>Medikamente &amp; HRT <span class="pro">PRO</span></h3><p>Hormonersatztherapie und andere Mittel festhalten, mit Erinnerungen direkt auf dem iPhone.</p></div>
+          <div class="karte"><h3>Widget &amp; Siri</h3><p>Eine Hitzewallung vom Home-Bildschirm aus eintragen, ohne die App zu öffnen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="screens">
+          <figure><div class="telefon"><img src="img/heute.webp" alt="Bildschirm „Heute“" width="640" height="1390" loading="lazy"></div><figcaption>Heute: schnell erfassen</figcaption></figure>
+          <figure><div class="telefon"><img src="img/einblicke.webp" alt="Bildschirm „Einblicke“ mit Verlauf und Zusammenfassung" width="640" height="1390" loading="lazy"></div><figcaption>Einblicke: Muster erkennen</figcaption></figure>
+          <figure><div class="telefon"><img src="img/privat.webp" alt="Bildschirm „Deine Daten gehören dir“" width="640" height="1390" loading="lazy"></div><figcaption>Privat von Anfang an</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="privat">
+          <h2>Ihre Daten bleiben bei Ihnen.</h2>
+          <ul>
+            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a58a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Kein Konto, keine Registrierung, keine E-Mail-Adresse</li>
+            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a58a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Keine Cloud: alles liegt nur auf Ihrem iPhone</li>
+            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a58a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Keine Werbung und keine Analyse in der App</li>
+            <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8a58a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Jederzeit mit einem Tipp vollständig löschbar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block preis" style="padding-top:8px">
+      <div class="wrap">
+        <h2>Gratis starten. <em>Einmal zahlen, fertig.</em></h2>
+        <p class="einleitung">MidLife ist kostenlos. Wer Arztbericht, Medikamente, den vollständigen Verlauf und alle Auswertungen möchte, schaltet MidLife Pro mit einem einmaligen Kauf frei – ohne Abo.</p>
+        <a class="knopf" href="https://apps.apple.com/de/app/midlife/id6769793211">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Gratis im App Store laden
+        </a>
+        <p class="hinweis">MidLife ist ein Tagebuch zur eigenen Dokumentation. Es stellt keine Diagnosen, empfiehlt keine Behandlung und ersetzt keine ärztliche Beratung.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <h4>Impressum</h4>
+      <p>Anbieter: Tobias Halbei, Am Gänswasen 7, 91448 Emskirchen · E-Mail: <a href="mailto:tobiashalbei@mailbox.org">tobiashalbei@mailbox.org</a></p>
+
+      <h4>Datenschutz dieser Webseite</h4>
+      <p>Diese Seite wird von GitHub Pages (GitHub Inc., USA) ausgeliefert. Beim Aufruf verarbeitet GitHub technisch notwendige Verbindungsdaten wie Ihre IP-Adresse, um die Seite auszuliefern und vor Missbrauch zu schützen (Art. 6 Abs. 1 lit. f DSGVO); Details in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>. Diese Seite setzt keine Cookies, bindet keine Analyse- oder Werbewerkzeuge ein und lädt keine Inhalte von fremden Servern; Schriften und Bilder liegen auf derselben Seite.</p>
+      <p><strong>Facebook-Seite:</strong> Zu MidLife gibt es eine Facebook-Seite. Für die Besucherstatistik dieser Seite („Seiten-Insights“) sind der Anbieter und die Meta Platforms Ireland Ltd. gemeinsam verantwortlich (Art. 26 DSGVO), geregelt in der <a href="https://www.facebook.com/legal/terms/page_controller_addendum">Seiten-Insights-Ergänzung</a>. Näheres in der <a href="https://www.facebook.com/privacy/policy">Datenschutzrichtlinie von Meta</a>. Wenn Sie über eine Anzeige hierher kommen, erfährt Meta das durch Ihren Klick in der Facebook- oder Instagram-App; diese Seite selbst übermittelt nichts an Meta.</p>
+      <p>Datenschutzerklärung der App: <a href="/midlife">robotnikz.github.io/midlife</a></p>
+    </div>
+  </footer>
+</body>
+</html>
